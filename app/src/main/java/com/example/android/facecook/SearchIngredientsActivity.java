@@ -44,22 +44,12 @@ public class SearchIngredientsActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.search_menu, menu);
-//        SearchView searchView = (SearchView) menu.findItem(R.id.action_search).getActionView();
-//        View view = menu.findItem(R.id.action_search).getActionView();
-//        //SearchView searchView = (SearchView) menu.getItem(0).getActionView();
-//        searchView.setIconifiedByDefault(false);
-//        searchView.setQueryHint("Search Ingredients");
-//        searchView.requestFocus();
+        SearchView searchView = (SearchView) menu.findItem(R.id.action_search).getActionView();
+        searchView.setIconifiedByDefault(false);
+        searchView.setIconified(false);
+        searchView.setQueryHint("Search Ingredients");
+        searchView.requestFocus();
         return true;
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == R.id.action_search) {
-            SearchView searchView = (SearchView) item;
-            searchView.setIconifiedByDefault(false);
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
 }
