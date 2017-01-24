@@ -64,7 +64,7 @@ public class IngredientsAdapter extends RecyclerView.Adapter<IngredientsAdapter.
         ingredientName.setText(ingredient.getName());
 
         Button addIngredientButton = holder.addIngredientButton;
-        addIngredientButton.setText("Add");
+        addIngredientButton.setText(R.string.add);
     }
 
     @Override

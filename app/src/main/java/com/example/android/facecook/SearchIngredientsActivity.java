@@ -47,7 +47,7 @@ public class SearchIngredientsActivity extends AppCompatActivity {
         SearchView searchView = (SearchView) menu.findItem(R.id.action_search).getActionView();
         searchView.setIconifiedByDefault(false);
         searchView.setIconified(false);
-        searchView.setQueryHint("Search Ingredients");
+        searchView.setQueryHint(getString(R.string.searchIngredients));
         searchView.requestFocus();
         return true;
     }
