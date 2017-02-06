@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -24,13 +25,13 @@ public class IngredientsAdapter extends RecyclerView.Adapter<IngredientsAdapter.
 
         public ImageView ingredientImage;
         public TextView ingredientName;
-        public Button addIngredientButton;
+        public CheckBox ingredientCheckBox;
 
         public ViewHolder(View itemView) {
             super(itemView);
             ingredientImage = (ImageView) itemView.findViewById(R.id.ingredient_image);
             ingredientName = (TextView) itemView.findViewById(R.id.ingredient_name);
-            addIngredientButton = (Button) itemView.findViewById(R.id.add_button);
+            ingredientCheckBox = (CheckBox) itemView.findViewById(R.id.ingredient_check);
         }
     }
 
@@ -48,7 +49,7 @@ public class IngredientsAdapter extends RecyclerView.Adapter<IngredientsAdapter.
         Context context = parent.getContext();
         LayoutInflater inflater = LayoutInflater.from(context);
 
-        View ingredientView = inflater.inflate(R.layout.ingredient_item, parent, false);
+        View ingredientView = inflater.inflate(R.layout.item_ingredient, parent, false);
         ViewHolder viewHolder = new ViewHolder(ingredientView);
         return viewHolder;
     }
@@ -63,8 +64,7 @@ public class IngredientsAdapter extends RecyclerView.Adapter<IngredientsAdapter.
         TextView ingredientName = holder.ingredientName;
         ingredientName.setText(ingredient.getName());
 
-        Button addIngredientButton = holder.addIngredientButton;
-        addIngredientButton.setText(R.string.add);
+        CheckBox ingredientCheckBox = holder.ingredientCheckBox;
     }
 
     @Override

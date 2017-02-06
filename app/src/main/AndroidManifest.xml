@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.android.facecook">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/facecook_logo"
@@ -15,8 +17,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SearchIngredientsActivity"
-            android:parentActivityName=".MainActivity"></activity>
+        <activity
+            android:name=".SearchIngredientsActivity"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".RecipesActivity"
+            android:label="@string/recipes"
+            android:parentActivityName=".SearchIngredientsActivity" />
     </application>
 
 </manifest>

@@ -3,4 +3,7 @@
     <string name="search_title">Search</string>
     <string name="searchIngredients">Search Ingredients</string>
     <string name="add">Add</string>
+
+    <string name="recipes">Recipes</string>
+    <string name="continue_button">Continue</string>
 </resources>
