@@ -89,10 +89,10 @@ public class SearchIngredientsActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.search_menu, menu);
         SearchView searchView = (SearchView) menu.findItem(R.id.action_search).getActionView();
-        searchView.setIconifiedByDefault(false);
-        searchView.setIconified(false);
+        //searchView.setIconifiedByDefault(false);
+        //searchView.setIconified(false);
         searchView.setQueryHint(getString(R.string.searchIngredients));
-        searchView.requestFocus();
+        //searchView.requestFocus();
         return true;
     }
 
