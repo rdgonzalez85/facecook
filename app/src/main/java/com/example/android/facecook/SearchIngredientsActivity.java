@@ -1,45 +1,40 @@
 package com.example.android.facecook;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
-import android.util.Log;
 import android.view.Menu;
-import android.view.MenuItem;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.TextView;
 
 import com.example.android.facecook.helpers.RecyclerTouchListener;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.example.android.facecook.R.id.continueButton;
 
 public class SearchIngredientsActivity extends AppCompatActivity {
 
-    private ArrayList<Ingredient> selectedIngredients = new ArrayList<>();
-
+    final private ArrayList<Ingredient> selectedIngredients = new ArrayList<>();
+    private TextView ingredientsQuantity;
+    private Button continueButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_ingredients);
 
+        ingredientsQuantity = (TextView) findViewById(R.id.quantity_ingredient);
+
         final List<Ingredient> ingredients = getIngredients();
-
-
-        selectedIngredients.add(new Ingredient("Tomatoes"));
-        selectedIngredients.add(new Ingredient("Tomatoes"));
-        selectedIngredients.add(new Ingredient("Tomatoes"));
 
         RecyclerView ingredientsView = (RecyclerView) findViewById(R.id.ingredients_list);
 
-        IngredientsAdapter adapter = new IngredientsAdapter(this, ingredients);
+        IngredientsAdapter adapter = new IngredientsAdapter(this, ingredients, selectedIngredients);
 
         ingredientsView.setAdapter(adapter);
 
@@ -57,6 +52,8 @@ public class SearchIngredientsActivity extends AppCompatActivity {
                     } else {
                         selectedIngredients.remove(ingredient);
                     }
+                    updateQuantityValue();
+                    enableContinueButton();
                     checkBox.setChecked(!isChecked);
                 }
             }
@@ -67,7 +64,8 @@ public class SearchIngredientsActivity extends AppCompatActivity {
             }
         }));
 
-        Button continueButton = (Button) findViewById(R.id.continue_button);
+        continueButton = (Button) findViewById(R.id.continue_button);
+        continueButton.setEnabled(false);
         continueButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -76,6 +74,15 @@ public class SearchIngredientsActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    private void updateQuantityValue() {
+        String quantity = selectedIngredients.size() + " " + getString(R.string.itemsSelected);
+        ingredientsQuantity.setText(quantity);
+    }
+
+    private void enableContinueButton(){
+        continueButton.setEnabled(selectedIngredients.size() > 0);
     }
 
     @Override
@@ -97,12 +104,12 @@ public class SearchIngredientsActivity extends AppCompatActivity {
         ingredients.add(new Ingredient("Lettuce"));
         ingredients.add(new Ingredient("Rice"));
         ingredients.add(new Ingredient("Carrots"));
-        ingredients.add(new Ingredient("Tomatoes"));
-        ingredients.add(new Ingredient("Tomatoes"));
-        ingredients.add(new Ingredient("Tomatoes"));
-        ingredients.add(new Ingredient("Tomatoes"));
-        ingredients.add(new Ingredient("Tomatoes"));
-        ingredients.add(new Ingredient("Tomatoes"));
+        ingredients.add(new Ingredient("Meat"));
+        ingredients.add(new Ingredient("Apple"));
+        ingredients.add(new Ingredient("Avocado"));
+        ingredients.add(new Ingredient("Potato"));
+        ingredients.add(new Ingredient("Chicken"));
+        ingredients.add(new Ingredient("Olive"));
 
         return ingredients;
     }

@@ -5,6 +5,8 @@ import android.os.Parcelable;
 
 import java.io.Serializable;
 
+import static android.R.attr.name;
+
 /**
  * Created by raulrashuaman on 1/24/17.
  */
@@ -43,4 +45,16 @@ public class Ingredient implements Parcelable {
             return new Ingredient[size];
         }
     };
+
+    @Override
+    public boolean equals(Object obj) {
+        if (!(obj instanceof Ingredient))
+            return false;
+        if (obj == this)
+            return true;
+
+        Ingredient rhs = (Ingredient) obj;
+
+        return rhs.getName() == this.getName();
+    }
 }

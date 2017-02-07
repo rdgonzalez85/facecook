@@ -10,6 +10,7 @@ import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -20,6 +21,7 @@ public class IngredientsAdapter extends RecyclerView.Adapter<IngredientsAdapter.
 
     private List<Ingredient> mIngredients;
     private Context mContext;
+    private ArrayList<Ingredient> mSelectedIngredients;
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
@@ -35,9 +37,15 @@ public class IngredientsAdapter extends RecyclerView.Adapter<IngredientsAdapter.
         }
     }
 
-    public IngredientsAdapter(Context context, List<Ingredient> ingredients) {
-        mContext = context;
-        mIngredients = ingredients;
+    public IngredientsAdapter(Context context, List<Ingredient> mIngredients) {
+        this.mContext = mContext;
+        this.mIngredients = mIngredients;
+    }
+
+    public IngredientsAdapter(Context mContext, List<Ingredient> mIngredients, ArrayList<Ingredient> mSelectedIngredients) {
+        this.mIngredients = mIngredients;
+        this.mContext = mContext;
+        this.mSelectedIngredients = mSelectedIngredients;
     }
 
     private Context getContext() {
@@ -65,6 +73,9 @@ public class IngredientsAdapter extends RecyclerView.Adapter<IngredientsAdapter.
         ingredientName.setText(ingredient.getName());
 
         CheckBox ingredientCheckBox = holder.ingredientCheckBox;
+
+        Ingredient selectedIngredient = mIngredients.get(position);
+        ingredientCheckBox.setChecked(mSelectedIngredients.contains(selectedIngredient));
     }
 
     @Override

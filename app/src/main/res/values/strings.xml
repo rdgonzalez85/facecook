@@ -6,4 +6,5 @@
 
     <string name="recipes">Recipes</string>
     <string name="continue_button">Continue</string>
+    <string name="itemsSelected">Items Selected</string>
 </resources>
